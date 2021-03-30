@@ -5,7 +5,7 @@ def range(a, b=None, c=None):
     s = 1
     if c is not None:
         s = c
-    
+
     if b is None:
         x = 0
         yield 0

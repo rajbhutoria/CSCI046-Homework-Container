@@ -21,10 +21,9 @@ def range(a, b=None, c=None):
     if n == 0:
         return
     if n == 1:
-        yield 1
+        yield 0
     else:
         x = 0
-        yield 0
         while n > s:
             n -= s
             x += s

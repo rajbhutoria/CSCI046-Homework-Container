@@ -123,7 +123,7 @@ def fib_yield(n=None):
         f1 = 1
         i = 1
         for i in range(n):
-            f1 = f1 + f0
+            f2 = f1 + f0
             f0 = f1
             f1 = f2
             yield f0

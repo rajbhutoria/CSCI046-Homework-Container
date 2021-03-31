@@ -71,7 +71,7 @@ class Fib:
 
     def __repr__(self):
         if self.n is not None:
-            return 'Fib({self.n})'
+            return f'Fib({self.n})'
         else:
             return 'Fib()'
 
@@ -85,7 +85,7 @@ class FibIter:
         self.f0 = 1
         self.f1 = 1
         self.ret = 0
-        self. i = 0
+        self.i = 0
 
     def __next__(self):
         if self.n is not None and self.n + 1 <= self.i:
@@ -104,10 +104,13 @@ def fib_yield(n=None):
     ...generator that computes the first n fibonacci numbers.
     If n is None, then the generator is infinite.
     '''
-    if n is not None and n <= 2:
-        yield 1
 
-    if n is None:
+    if n is not None and n < 2:
+        yield 1
+    elif n is not None and n < 3:
+        yield 1
+        yield 1
+    elif n is None:
         yield 1
         yield 1
         while True:
@@ -127,12 +130,3 @@ def fib_yield(n=None):
             f0 = f1
             f1 = f2
             yield f0
-    if n < 2:
-        yield 1
-    f0 = 1
-    f1 = 1
-    for i in range(n - 1):
-        f2 = f1 + f0
-        f0 = f1
-        f1 = f2
-        yield f2

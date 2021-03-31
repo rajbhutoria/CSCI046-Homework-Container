@@ -2,21 +2,30 @@ def range(a, b=None, c=None):
     '''
     Built-in python range() function replicated using generators.
     '''
+    if b is None:
+        b = a
+        a = 0
+
     s = 1
     if c is not None:
         s = c
 
-    if b is None:
-        x = 0
-        yield 0
-        while a > s:
-            a -= s
-            x += s
-            yield x
+    case1 = False
+    case2 = False
+
+    if a > b:
+        case1 = True
     else:
-        x = a
-        yield a
-        while (b - a) > s:
-            b -= s
-            x += s
+        case2 = True
+
+    x = a
+    if (b - a) / s < 0:
+        return []
+    if case1 is True:
+        while x > b:
             yield x
+            x += s
+    if case2 is True:
+        while x < b:
+            yield x
+            x += s
